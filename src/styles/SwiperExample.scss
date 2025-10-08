@@ -1,0 +1,67 @@
+@use 'main' as *;
+
+.swiper-example {
+  margin: 2rem 0;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    color: $primary-color;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  &__swiper {
+    padding: 1rem 0;
+  }
+
+  &__slide {
+    height: auto;
+  }
+
+  &__content {
+    background: $light-color;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: $primary-color;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 123, 255, 0.2);
+    }
+
+    h4 {
+      color: $dark-color;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    p {
+      color: $secondary-color;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// Стили для навигации Swiper
+.swiper-button-next,
+.swiper-button-prev {
+  color: $primary-color !important;
+}
+
+.swiper-pagination-bullet {
+  background: $primary-color !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: $info-color !important;
+}
