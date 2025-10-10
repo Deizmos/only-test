@@ -1,0 +1,338 @@
+.historical-dates {
+  background: #F8F9FB;
+  padding: 60px 40px;
+  border-radius: 12px;
+  position: relative;
+  width: 1440px;
+  max-width: 1440px;
+  margin: 0 auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  // Сетка на фоне
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    border-radius: 12px;
+  }
+
+  // Заголовок
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  &__decorative-bar {
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  // Временная шкала
+  &__timeline {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+    height: 300px;
+  }
+
+  // Слайдер событий
+  &__events {
+    position: relative;
+  }
+}
+
+// Декоративная полоса
+.bar-segment {
+  width: 4px;
+  height: 20px;
+  border-radius: 2px;
+
+  &--blue {
+    background: #4A70FF;
+  }
+
+  &--pink {
+    background: #FF6B9B;
+    height: 24px;
+  }
+}
+
+// Большие числа года
+.timeline-years {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  z-index: 2;
+}
+
+.year-number {
+  font-size: 120px;
+  font-weight: 800;
+  line-height: 1;
+  user-select: none;
+
+  &--blue {
+    color: #4A70FF;
+  }
+
+  &--pink {
+    color: #FF6B9B;
+  }
+}
+
+// Окружность временной шкалы
+.timeline-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 280px;
+  border: 2px dashed #E0E0E0;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+// Точки на окружности
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  background: #666;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 3;
+
+  &:hover {
+    background: #4A70FF;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+
+  &.active {
+    background: #4A70FF;
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 0 0 4px rgba(74, 112, 255, 0.2);
+  }
+}
+
+// Индикатор категории
+.timeline-category {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.category-count {
+  width: 24px;
+  height: 24px;
+  background: #666;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.category-name {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+// Навигация слайдера
+.events-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.events-pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.current-slide {
+  font-weight: 600;
+}
+
+.total-slides {
+  color: #999;
+}
+
+.events-arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.arrow-btn {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #E0E0E0;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  color: #666;
+
+  &:hover {
+    border-color: #4A70FF;
+    color: #4A70FF;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Swiper стили
+.events-swiper {
+  padding: 0 0 20px 0;
+}
+
+// Карточка события
+.event-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.event-year {
+  font-size: 18px;
+  font-weight: 700;
+  color: #4A70FF;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.event-description {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+  flex: 1;
+}
+
+// Адаптивность
+@media (max-width: 1440px) {
+  .historical-dates {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .historical-dates {
+    padding: 40px 20px;
+    margin: 0 10px;
+  }
+
+  .historical-dates__title {
+    font-size: 24px;
+  }
+
+  .year-number {
+    font-size: 80px;
+  }
+
+  .timeline-years {
+    gap: 20px;
+  }
+
+  .timeline-circle {
+    width: 200px;
+    height: 200px;
+  }
+
+  .timeline-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .events-navigation {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .events-arrows {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .historical-dates {
+    padding: 30px 15px;
+  }
+
+  .year-number {
+    font-size: 60px;
+  }
+
+  .timeline-years {
+    gap: 15px;
+  }
+
+  .timeline-circle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .event-card {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,131 @@
+.historical-dates-example {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px 0;
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .page-title {
+    text-align: center;
+    color: white;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 60px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .example-section {
+    margin-bottom: 80px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .section-title {
+    color: white;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .blocks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  }
+
+  // Стили для разных блоков
+  .block-1 {
+    .timeline-dot.active {
+      background: #FF6B9B;
+    }
+
+    .year-number--blue {
+      color: #FF6B9B;
+    }
+
+    .event-year {
+      color: #FF6B9B;
+    }
+  }
+
+  .block-2 {
+    .timeline-dot.active {
+      background: #00C896;
+    }
+
+    .year-number--blue {
+      color: #00C896;
+    }
+
+    .event-year {
+      color: #00C896;
+    }
+  }
+
+  .minimal-block {
+    max-width: 800px;
+    margin: 0 auto;
+
+    .timeline-dot.active {
+      background: #FF9500;
+    }
+
+    .year-number--blue {
+      color: #FF9500;
+    }
+
+    .event-year {
+      color: #FF9500;
+    }
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .historical-dates-example {
+    padding: 20px 0;
+
+    .page-title {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .example-section {
+      margin-bottom: 60px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .historical-dates-example {
+    .container {
+      padding: 0 15px;
+    }
+
+    .page-title {
+      font-size: 28px;
+    }
+
+    .section-title {
+      font-size: 20px;
+    }
+  }
+}
